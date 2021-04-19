@@ -51,7 +51,7 @@ if (SpeechRecognition) {
     const transcript = event.results[current][0].transcript;
 
     if (transcript.toLowerCase().trim() === "ayuda del sitio") {
-      window.open('info.html', '__blank');
+      window.open('ayuda.html');
     }
     else if (!searchFormInput.value) {
       searchFormInput.value = transcript;
@@ -86,18 +86,23 @@ if (SpeechRecognition) {
         open("https://www.base-search.net/Search/Results?type=all&lookfor=" + searchFormInput.value);
       }
 
-
-      else if (transcript.toLowerCase().trim() === "salir del sitio") {
-
-        var mensaje;
-        var opcion = confirm("¿Desea salir?");
-
-        if (opcion == true) {
-          window.close();
-        } else {
-          mensaje = "No";
-        }
-      }
+      if(transcript.toLowerCase().trim()==="salir del sitio") {
+        //window.close();
+        
+         var mensaje;
+         var opcion = confirm("Para salir dar clic en aceptar");
+        
+         if (opcion == true) {
+            mensaje = "Has clickado OK";
+            
+            window.close();     //window.close();
+            recognition.stop();
+       } else {
+           mensaje = "Has clickado Cancelar";
+       }
+       document.getElementById("ejemplo").innerHTML = mensaje;
+     }
+      
 
       else if (transcript.toLowerCase().trim() === "borrar") {
         searchFormInput.value = "";

@@ -86,19 +86,17 @@ if (SpeechRecognition) {
         open("https://www.base-search.net/Search/Results?type=all&lookfor=" + searchFormInput.value);
       }
 
-      if(transcript.toLowerCase().trim()==="salir del sitio") {
-        //window.close();
-        
+     else if(transcript.toLowerCase().trim()==="salir del sitio") {
          var mensaje;
-         var opcion = confirm("Para salir dar clic en aceptar");
+         var opcion = confirm("¿Deseas salir?");
         
          if (opcion == true) {
-            mensaje = "Has clickado OK";
+            mensaje = "Haz aceptado salir";
             
-            window.close();     //window.close();
+            window.close();     
             recognition.stop();
        } else {
-           mensaje = "Has clickado Cancelar";
+           mensaje = "Haz Cancelado";
        }
        document.getElementById("ejemplo").innerHTML = mensaje;
      }
